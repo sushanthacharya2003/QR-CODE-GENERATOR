@@ -8,11 +8,15 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+<<<<<<< HEAD
     "ajv": "^6.12.6",
     "patch-package": "^8.0.0",
     "postinstall-postinstall": "^2.1.0",
     //"postinstall": "patch-package",
     "qrcode": "^1.5.3",
+=======
+    "qrcode": "^1.5.4",
+>>>>>>> c12170e33902dc712c89c65992ea97d1be377e61
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
