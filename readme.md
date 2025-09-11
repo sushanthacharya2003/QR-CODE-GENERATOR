@@ -13,6 +13,10 @@ Generate QR codes easily from your browser! This project is a React-based web ap
 
 ![Demo Screenshot](./project%20demo/demo%20photo.jpg)
 
+### Video Demo
+
+<video src="./project%20demo/demo%20video.mp4" controls width="500"></video>
+
 ## Getting Started
 
 ### Prerequisites
