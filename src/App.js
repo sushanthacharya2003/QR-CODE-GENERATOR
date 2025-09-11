@@ -25,7 +25,7 @@ export default function App() {
       const options = {
         errorCorrectionLevel: "H",
         type: "image/png",
-        width: 800,
+        width: 200,
         margin: 1,
       };
 
@@ -39,13 +39,37 @@ export default function App() {
       showAlert("QR code generation failed! Please try again.");
     }
   }
+
+  // Handle form submit
   const handleSubmit = (e) => {
     e && e.preventDefault();
     if (!url.trim()) {
       showAlert("Please enter a valid URL or text");
       return;
     }
+    generateFor(url);
   };
+
+  // Clear input + QR code
+  const handleClear = () => {
+    setUrl("");
+    setDataUrl("");
+    setStatus("idle");
+    inputRef.current?.focus();
+  };
+
+  // Download QR code image
+  const handleDownload = () => {
+    if (!dataUrl) {
+      showAlert("Nothing to download yet!");
+      return;
+    }
+    const link = downloadRef.current;
+    link.href = dataUrl;
+    link.download = "qrcode.png";
+    link.click();
+  };
+
   return (
     <div className="App">
       <h1>QR Code Generator</h1>
@@ -53,9 +77,9 @@ export default function App() {
         <label htmlFor="urlInput">Enter the link</label>
         <input
           id="urlInput"
-          type={url}
+          type="url"
           value={url}
-          ref={InputRef}
+          ref={inputRef}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="https://example.com"
           required
@@ -78,7 +102,6 @@ export default function App() {
           : "Ready"}
       </div>
       <div className="qr-area" aria-live="polite">
-        {/* SPEC: area must use <img src="" alt="qr-code"> */}
         {dataUrl ? (
           <img id="qr-code" alt="qr-code" src={dataUrl} />
         ) : (
